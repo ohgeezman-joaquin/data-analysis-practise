@@ -1,47 +1,43 @@
-以下範例為一個完整的 README.md 範本，您可以依照實際專案內容及需求進行修改。以下內容已使用繁體中文（台灣用詞）。請將此文字複製到您的 README.md 中，並根據實際檔案名稱、參數或結果做微調。
-
-```markdown
 # Data Analysis Practise
 
 本專案包含多種以 Python 進行資料分析與機器學習的範例程式，涵蓋以下主題：
 
-- 資料前處理 (EDA)
-- 將 MySQL 資料表匯出為 CSV
-- 決策樹(Decision Tree) 與隨機森林(Random Forest) 等傳統機器學習分類
-- 支援向量機(SVM)、邏輯回歸(Logistic Regression)、神經網路(MLP) 等分類演算法
-- 回歸模型 (Decision Tree Regressor、Random Forest Regressor、SVR、Linear Regression、Neural Network、Polynomial Regression)
-- 基於 Transformer 架構的分類/回歸範例 (TabTransformer)
-- 非監督式學習：K-means、DBSCAN、階層式聚類 (Hierarchical Clustering)
-- 交叉驗證 (KFold、StratifiedKFold)
-- 特徵重要性 (Feature Importance)、相關性分析 (Correlation)
-- 自動化生成 Profiling 報告 (ydata-profiling / pandas_profiling)
+* 資料前處理 (EDA)
+* 將 MySQL 資料表匯出為 CSV
+* 決策樹(Decision Tree) 與隨機森林(Random Forest) 等傳統機器學習分類
+* 支援向量機(SVM)、邏輯回歸(Logistic Regression)、神經網路(MLP) 等分類演算法
+* 回歸模型 (Decision Tree Regressor、Random Forest Regressor、SVR、Linear Regression、Neural Network、Polynomial Regression)
+* 基於 Transformer 架構的分類/回歸範例 (TabTransformer)
+* 非監督式學習：K-means、DBSCAN、階層式聚類 (Hierarchical Clustering)
+* 交叉驗證 (KFold、StratifiedKFold)
+* 特徵重要性 (Feature Importance)、相關性分析 (Correlation)
+* 自動化生成 Profiling 報告 (ydata-profiling / pandas\_profiling)
 
 ---
 
 ## 專案結構
 
 ```
-
 .
-├── Classification\_Basic.py         # 傳統機器學習分類範例（Decision Tree、Random Forest、SVM、Logistic Regression、MLP）
-├── Classification\_Transformer.py   # 基於 TabTransformer 的分類範例
-├── Regression\_Basic.py             # 傳統機器學習回歸範例（Decision Tree Regressor、Random Forest Regressor、SVR、Linear Regression、MLP、Polynomial Regression）
-├── Regression\_Transformer.py       # 基於 TabTransformer 的回歸範例
-├── Clustering\_Basic.py             # 聚類分析範例（K-means、DBSCAN、Hierarchical）
+├── Classification_Basic.py         # 傳統機器學習分類範例（Decision Tree、Random Forest、SVM、Logistic Regression、MLP）
+├── Classification_Transformer.py   # 基於 TabTransformer 的分類範例
+├── Regression_Basic.py             # 傳統機器學習回歸範例（Decision Tree Regressor、Random Forest Regressor、SVR、Linear Regression、MLP、Polynomial Regression）
+├── Regression_Transformer.py       # 基於 TabTransformer 的回歸範例
+├── Clustering_Basic.py             # 聚類分析範例（K-means、DBSCAN、Hierarchical）
 ├── DecisionTree.py                 # 單獨抽取 Decision Tree 分類並搭配 GridSearchCV 的參考範例
-├── EDA\_basic.py                    # 資料探索性分析（EDA）範例（可選擇性產生各種圖表、pandas\_profiling 報告）
-├── convert\_mysql\_to\_csv.py         # 將 MySQL 資料表轉成 CSV 的範例程式
+├── EDA_basic.py                    # 資料探索性分析（EDA）範例（可選擇性產生各種圖表、pandas_profiling 報告）
+├── convert_mysql_to_csv.py         # 將 MySQL 資料表轉成 CSV 的範例程式
 ├── README.md                       # 本檔案
-├── bank\_data.csv                   # (範例) 用於分類任務的銀行行銷資料集
-├── student\_por.csv                 # (範例) 用於回歸任務的學生成績資料集
-├── Online\_Retail.csv               # (範例) 用於聚類任務的線上零售(RFM)資料集
-└── bank\_data\_profile.html          # (範例) ydata-profiling 產生的銀行資料分析報告
-
+├── bank_data.csv                   # (範例) 用於分類任務的銀行行銷資料集
+├── student_por.csv                 # (範例) 用於回歸任務的學生成績資料集
+├── Online_Retail.csv               # (範例) 用於聚類任務的線上零售(RFM)資料集
+└── bank_data_profile.html          # (範例) ydata-profiling 產生的銀行資料分析報告
 ```
 
 > **註**：
-> - 如果您使用的是不同檔案名稱，請自行調整程式內 `DATA_FILE`、`TARGET_COLUMN` 等參數。
-> - 部分範例會在執行完後輸出 HTML 報告 (如 `bank_data_profile.html`)。
+>
+> * 如果您使用的是不同檔案名稱，請自行調整程式內 `DATA_FILE`、`TARGET_COLUMN` 等參數。
+> * 部分範例會在執行完後輸出 HTML 報告 (如 `bank_data_profile.html`)。
 
 ---
 
@@ -50,7 +46,6 @@
 建議使用 Python 3.8 以上版本，並安裝以下主要套件：
 
 ```
-
 pandas
 numpy
 scikit-learn
@@ -58,9 +53,8 @@ matplotlib
 seaborn
 torch            # 若要執行 Transformer 版本 (TabTransformer)
 ydata-profiling  # 若要產生自動化 EDA 報告
-mysql-connector-python  # 用於 convert\_mysql\_to\_csv.py
-
-````
+mysql-connector-python  # 用於 convert_mysql_to_csv.py
+```
 
 可參考以下步驟建立虛擬環境並安裝套件（以 conda 為例）：
 
@@ -80,7 +74,7 @@ pip install ydata-profiling
 
 # 若要使用 MySQL 轉 CSV
 pip install mysql-connector-python
-````
+```
 
 若您使用 `requirements.txt` 管理相依，可以自行將上述套件版本鎖定並執行：
 
@@ -125,9 +119,7 @@ python Classification_Basic.py
   * SVM
   * Logistic Regression
   * Neural Network (MLPClassifier)
-
 * 程式會切分 80% 訓練 / 20% 測試，並依序列印各模型的 Accuracy、Precision、Recall、F1-score。
-
 * 範例輸出（部分）：
 
   ```
@@ -144,7 +136,6 @@ python Classification_Basic.py
   Accuracy: 0.9024
     ...
   ```
-
 * 也內建交叉驗證 (StratifiedKFold、KFold) 的準確率輸出。
 
 ### 4. 基於 TabTransformer 的分類 (Classification\_Transformer.py)
@@ -174,9 +165,7 @@ python Regression_Basic.py
   * Linear Regression
   * Neural Network Regressor (MLPRegressor)
   * Polynomial Regression (degree=2)
-
 * 程式會切分 80% 訓練 / 20% 測試，並列印各模型的 MSE、RMSE、MAE、Median AE、Explained Variance、R-squared、MAPE。
-
 * 範例輸出（部分）：
 
   ```
@@ -202,7 +191,6 @@ python Regression_Basic.py
   R-squared: 0.8393
   ...
   ```
-
 * 程式末段也有 KFold 交叉驗證的 R² 與 MSE 結果。
 
 ### 6. 基於 TabTransformer 的回歸 (Regression\_Transformer.py)
