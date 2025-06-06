@@ -183,7 +183,7 @@ python Clustering_Basic.py
 | Polynomial Regression (degree=2) | 5.6509 | 2.3772 | 1.7123 | 0.4205 |       0.4266       |
 | Transformer Regressor            | 1.8924 |        | 0.9365 | 0.8059 |       0.8063       |
 
-![系統流程圖](clustering_result.png)
+![分類相關矩陣](classification_correlation_matrix.png)
 
 ---
 
@@ -194,5 +194,6 @@ python Clustering_Basic.py
 | K-means      |   0.9235   |     2641.7634     |     0.6474     |
 | Hierarchical |   0.9150   |     2519.1557     |     0.7127     |
 
+![聚類分析結果](clustering_result.png)
 
 ---
