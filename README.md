@@ -179,15 +179,6 @@ python DecisionTree.py
 | Neural Network (MLP)    | 0.8846   | 0.93              | 0.94           | 0.93       | 0.52              | 0.49           | 0.51       |
 | Transformer             | 0.9055   | 0.9412            | 0.9524         | 0.9468     | 0.6054            | 0.5510         | 0.5769     |
 
-| 方法                  | Accuracy | StratifiedKFold (mean ± std) | KFold (mean ± std) | Class 0 Precision
-| -------------------- | :------: | :--------------------------: | :----------------: |
-| Decision Tree        |  0.8744  |        0.8767 ± 0.0004       |   0.8762 ± 0.0034  |
-| Random Forest        |  0.9024  |        0.9043 ± 0.0011       |   0.9058 ± 0.0028  |
-| SVM                  |  0.9016  |        0.9034 ± 0.0016       |   0.9033 ± 0.0019  |
-| Logistic Regression  |  0.9014  |        0.9019 ± 0.0022       |   0.9020 ± 0.0023  |
-| Neural Network (MLP) |  0.8846  |        0.8871 ± 0.0056       |   0.8862 ± 0.0016  |
-| Transformer          |  0.9055  |                              |                    |
-
 ---
 
 ## 回歸任務 (Regression)
