@@ -37,56 +37,15 @@
 > **註**：
 >
 > * 如果您使用的是不同檔案名稱，請自行調整程式內 `DATA_FILE`、`TARGET_COLUMN` 等參數。
-> * 部分範例會在執行完後輸出 HTML 報告 (如 `bank_data_profile.html`)。
 
 ---
 
-## 環境與相依套件
-
-建議使用 Python 3.8 以上版本，並安裝以下主要套件：
-
-```
-pandas
-numpy
-scikit-learn
-matplotlib
-seaborn
-torch            # 若要執行 Transformer 版本 (TabTransformer)
-ydata-profiling  # 若要產生自動化 EDA 報告
-mysql-connector-python  # 用於 convert_mysql_to_csv.py
-```
-
-可參考以下步驟建立虛擬環境並安裝套件（以 conda 為例）：
-
-```bash
-# 建立並進入虛擬環境（名稱可自行更改）
-conda create -n sql_data_analysis python=3.9 -y
-conda activate sql_data_analysis
-
-# 安裝基本套件
-pip install pandas numpy scikit-learn matplotlib seaborn
-
-# 若要執行 PyTorch 相關範例
-pip install torch torchvision torchaudio
-
-# 若要產生 EDA 報告
-pip install ydata-profiling
-
-# 若要使用 MySQL 轉 CSV
-pip install mysql-connector-python
-```
-
-若您使用 `requirements.txt` 管理相依，可以自行將上述套件版本鎖定並執行：
-
-```bash
-pip install -r requirements.txt
-```
-
----
-
-## 執行方式
+## 資料集下載
 
 以下示範各個範例程式的基本執行方式與參數設定。請先將資料集 (例如 `bank_data.csv`、`student_por.csv`、`Online_Retail.csv`) 放在程式相同目錄下，或修改程式中 `DATA_FILE` 的路徑。
+- [分類任務-銀行資料集 (bank_data.csv)](https://archive.ics.uci.edu/dataset/222/bank+marketing)
+- [回歸任務-學生成績資料集 (student_por.csv)](https://archive.ics.uci.edu/dataset/320/student+performance)
+- [聚類任務-線上零售資料集 (Online_Retail.csv)](https://archive.ics.uci.edu/dataset/352/online+retail)
 
 ### 1. 資料探索性分析 (EDA)
 
@@ -120,23 +79,6 @@ python Classification_Basic.py
   * Logistic Regression
   * Neural Network (MLPClassifier)
 * 程式會切分 80% 訓練 / 20% 測試，並依序列印各模型的 Accuracy、Precision、Recall、F1-score。
-* 範例輸出（部分）：
-
-  ```
-  ========== Decision Tree ==========
-  Accuracy: 0.8744
-                precision    recall  f1-score   support
-
-             0       0.93      0.93      0.93      7952
-             1       0.48      0.48      0.48      1091
-
-      accuracy                           0.87      9043
-     ...
-  ========== Random Forest ==========
-  Accuracy: 0.9024
-    ...
-  ```
-* 也內建交叉驗證 (StratifiedKFold、KFold) 的準確率輸出。
 
 ### 4. 基於 TabTransformer 的分類 (Classification\_Transformer.py)
 
@@ -166,32 +108,6 @@ python Regression_Basic.py
   * Neural Network Regressor (MLPRegressor)
   * Polynomial Regression (degree=2)
 * 程式會切分 80% 訓練 / 20% 測試，並列印各模型的 MSE、RMSE、MAE、Median AE、Explained Variance、R-squared、MAPE。
-* 範例輸出（部分）：
-
-  ```
-  Target Variable Statistics:
-  count    649.000000
-  mean      11.906009
-  std        3.230656
-  ...
-  ========== Decision Tree Regressor ==========
-
-  Evaluation Metrics:
-  MSE: 2.7462
-  RMSE: 1.6572
-  MAE: 0.8385
-  Explained Variance Score: 0.7184
-  R-squared: 0.7184
-  ...
-  ========== Random Forest Regressor ==========
-  MSE: 1.5672
-  RMSE: 1.2519
-  MAE: 0.7540
-  Explained Variance Score: 0.8394
-  R-squared: 0.8393
-  ...
-  ```
-* 程式末段也有 KFold 交叉驗證的 R² 與 MSE 結果。
 
 ### 6. 基於 TabTransformer 的回歸 (Regression\_Transformer.py)
 
@@ -285,57 +201,3 @@ python DecisionTree.py
 您可參考上方結果，或自行根據跑出的輸出修改數值說明。
 
 ---
-
-## 使用注意事項
-
-1. **路徑配置**
-
-   * 請確保程式中宣告的 `DATA_FILE` 路徑正確（相對於執行時所在資料夾），否則會找不到檔案而報錯。
-   * 若將單一資料集放在不同資料夾，請在執行時切換至正確目錄或修改程式中的路徑。
-
-2. **套件版本**
-
-   * 若使用不同版本的套件 (e.g. scikit-learn、pandas、torch)，結果可能略有差異。建議鎖定相依套件版本或使用虛擬環境以確保可重現性。
-
-3. **資料格式**
-
-   * `student_por.csv` 的欄位以「;」分隔，請以 `sep=';'` 方式讀取。若您的檔案分隔符不同，請相應修改。
-   * `Online_Retail.csv` 需包含 `InvoiceDate`, `Quantity`, `UnitPrice`, `CustomerID`, `InvoiceNo` 等欄位，並且 `InvoiceDate` 應為可解析的時間格式。
-
-4. **硬體資源**
-
-   * TabTransformer 範例 (PyTorch) 如使用大量資料，建議具備 GPU 以加速訓練；若僅使用 CPU，訓練時間會相對較長。
-
-5. **報告產出**
-
-   * EDA 報告 (`bank_data_profile.html`) 會輸出至當前目錄，您可使用瀏覽器開啟並檢視詳細分析結果。
-
----
-
-## 版權與授權
-
-此專案採用 MIT License，歡迎在註明來源並保留授權資訊的情況下自由使用、修改與分享。
-
-```
-MIT License
-
-Copyright (c) 2025 [Your Name]
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-...
-```
-
-請自行補上您的姓名或機構，以及授權聲明內容。
-
----
-
-## 聯絡方式
-
-若有任何問題或建議，歡迎透過 GitHub Issues 提出，或寄信至：
-
-```
-your_email@example.com
-```
-
-感謝您閱讀，祝專案順利！
