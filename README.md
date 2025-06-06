@@ -169,6 +169,7 @@ python Clustering_Basic.py
 | Neural Network (MLP)    | 0.8846   | 0.93              | 0.94           | 0.93       | 0.52              | 0.49           | 0.51       |
 | Transformer             | 0.9055   | 0.9412            | 0.9524         | 0.9468     | 0.6054            | 0.5510         | 0.5769     |
 
+![分類相關矩陣](classification_correlation_matrix.png)
 ---
 
 ## 回歸任務 (Regression)
@@ -183,7 +184,6 @@ python Clustering_Basic.py
 | Polynomial Regression (degree=2) | 5.6509 | 2.3772 | 1.7123 | 0.4205 |       0.4266       |
 | Transformer Regressor            | 1.8924 |        | 0.9365 | 0.8059 |       0.8063       |
 
-![分類相關矩陣](classification_correlation_matrix.png)
 
 ---
 
