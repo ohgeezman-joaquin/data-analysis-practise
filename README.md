@@ -166,38 +166,84 @@ python DecisionTree.py
 
 ---
 
-## 範例結果摘要
+## 數據結果
 
 以下僅為執行範例時所看到的部分結果，可作為參考：
 
-1. **Classification\_Basic.py**
+以下將「分類任務」與「回歸任務」的各模型結果表格，新增您在 Transformer 版本（TabTransformer）中得到的數據比對欄位，並以「待補」表示請您執行程式後自行填寫結果。請將最終結果填入相應欄位，以方便完整比較。
 
-   * Decision Tree Accuracy: 0.8744
-   * Random Forest Accuracy: 0.9024
-   * SVM Accuracy: 0.9016
-   * Logistic Regression Accuracy: 0.9014
-   * Neural Network Accuracy: 0.8846
-   * 交叉驗證 (StratifiedKFold)：Random Forest \~0.9043 ±0.0011；SVM \~0.9034 ±0.0016
+---
 
-2. **Regression\_Basic.py**
+## 分類任務 (Classification)
 
-   * Decision Tree Regressor R²: 0.7184
-   * Random Forest Regressor R²: 0.8393
-   * SVR R²: 0.7703
-   * Linear Regression R²: 0.8487
-   * Neural Network Regressor R²: 0.7512
-   * Polynomial Regression (degree=2) R²: 0.4205
+| 方法                   | Accuracy | StratifiedKFold (mean ± std) | KFold (mean ± std) |
+| -------------------- | :------: | :--------------------------: | :----------------: |
+| Decision Tree        |  0.8744  |        0.8767 ± 0.0004       |   0.8762 ± 0.0034  |
+| Random Forest        |  0.9024  |        0.9043 ± 0.0011       |   0.9058 ± 0.0028  |
+| SVM                  |  0.9016  |        0.9034 ± 0.0016       |   0.9033 ± 0.0019  |
+| Logistic Regression  |  0.9014  |        0.9019 ± 0.0022       |   0.9020 ± 0.0023  |
+| Neural Network (MLP) |  0.8846  |        0.8871 ± 0.0056       |   0.8862 ± 0.0016  |
+| Transformer          |  0.9055  |                              |                    |
 
-3. **Clustering\_Basic.py**
+---
 
-   * K-means 最佳 K: 2
-   * K-means Silhouette: 0.9235
-   * Hierarchical Silhouette: 0.9150
-   * DBSCAN 群集分析結果：
+## 回歸任務 (Regression)
 
-     * 群集 -1 (高價值客戶)：Recency≈31.98, Frequency≈44.02, Monetary≈58121.98
-     * 群集 0 (流失風險客戶)：Recency≈92.23, Frequency≈3.81, Monetary≈1400.49
+| 方法                               |   MSE  |  RMSE  |   MAE  |   R²   | Explained Variance |
+| -------------------------------- | :----: | :----: | :----: | :----: | :----------------: |
+| Decision Tree Regressor          | 2.7462 | 1.6572 | 0.8385 | 0.7184 |       0.7184       |
+| Random Forest Regressor          | 1.5672 | 1.2519 | 0.7540 | 0.8393 |       0.8394       |
+| SVR                              | 2.2396 | 1.4965 | 0.9044 | 0.7703 |       0.7703       |
+| Linear Regression                | 1.4759 | 1.2149 | 0.7651 | 0.8487 |       0.8499       |
+| Neural Network Regressor (MLP)   | 2.4258 | 1.5575 | 1.0172 | 0.7512 |       0.7524       |
+| Polynomial Regression (degree=2) | 5.6509 | 2.3772 | 1.7123 | 0.4205 |       0.4266       |
+| Transformer Regressor            | 1.8924 |        |   0.9365   |   0.8059   |          0.8063         |
 
-您可參考上方結果，或自行根據跑出的輸出修改數值說明。
+
+---
+
+## 聚類任務 (Clustering)
+
+> 這裡不必新增 Transformer 欄位，因為您沒有 Transformer 版本的聚類程式。若未來有其他方法，也可依照下列格式延伸。
+
+| 方法           | Silhouette | Calinski-Harabasz | Davies-Bouldin |
+| ------------ | :--------: | :---------------: | :------------: |
+| K-means      |   0.9235   |     2641.7634     |     0.6474     |
+| Hierarchical |   0.9150   |     2519.1557     |     0.7127     |
+
+> <sup>如需比對 DBSCAN 結果，可另行列出 Cluster-by-cluster 的 RFM 平均值。</sup>
+
+---
+
+### 如何填寫 Transformer 部分
+
+1. **Classification TabTransformer**
+   執行 `Classification_Transformer.py`，程式結尾大致會輸出：
+
+   ```
+   Test Accuracy: x.xxxx
+   classification report:
+               precision    recall  f1-score   support
+       0
+       1
+       …
+   ```
+
+   同時如果有搭配交叉驗證，也會印出 StratifiedKFold / KFold 的平均 Accuracy ± 標準差。請將對應數值填到上表「待補」欄位裡。
+
+2. **Regression TabTransformer**
+   執行 `Regression_Transformer.py`，程式結尾會輸出：
+
+   ```
+   Test MSE: x.xxxx
+   Test RMSE: x.xxxx
+   Test MAE: x.xxxx
+   Test R-squared: x.xxxx
+   Test Explained Variance: x.xxxx
+   ```
+
+   請將這些指標值對應填入上表「待補」位置。
+
+完成後，您就能在同一張表內同時看到傳統模型與 Transformer 版的性能比較，方便直觀比較各種方法優劣。
 
 ---
