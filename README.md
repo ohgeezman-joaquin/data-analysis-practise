@@ -154,16 +154,6 @@ python Clustering_Basic.py
     建議: 流失風險客戶，需要挽留策略
   ```
 
-### 8. DecisionTree with GridSearchCV (DecisionTree.py)
-
-```bash
-python DecisionTree.py
-```
-
-* 使用 `ColumnTransformer` 做數值資料標準化、類別資料 One-Hot 編碼，搭配 `DecisionTreeClassifier`。
-* 同時使用 `GridSearchCV` 在 `criterion`、`max_depth`、`min_samples_split`、`min_samples_leaf` 等參數上做調參。
-* 列印最優參數、最佳交叉驗證準確率，以及測試集上的分類報告。
-
 ---
 
 # 數據結果
